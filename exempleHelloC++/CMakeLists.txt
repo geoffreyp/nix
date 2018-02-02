@@ -1,0 +1,8 @@
+cmake_minimum_required( VERSION 3.0 )
+project( hello )
+find_package( PkgConfig REQUIRED )
+pkg_check_modules( MYPKGS REQUIRED eigen3 )
+include_directories( ${MYPKGS_INCLUDE_DIRS} )
+add_executable( hello hello.cpp )
+target_link_libraries( hello ${MYPKGS_LIBRARIES} )
+install( TARGETS hello DESTINATION bin )
