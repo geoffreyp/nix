@@ -2,10 +2,10 @@
   network.description = "Web server";
   webserver = { config, pkgs, ... }: {
     networking.firewall.allowedTCPPorts = [ 80 ];
-    services.httpd = {
+    services.lighttpd = {
       enable = true;
-      adminAddr = "geoffrey@pruvost.xyz";
-      documentRoot = "${pkgs.ghc.doc}/share/doc/ghc/html";
+      #adminAddr = "geoffrey@pruvost.xyz";
+      document-root = "${pkgs.ghc.doc}/share/doc/ghc/html";
     };
     deployment = {
       targetEnv = "virtualbox";
