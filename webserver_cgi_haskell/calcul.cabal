@@ -1,0 +1,30 @@
+-- hello.cabal
+name:                calcul
+version:             0.1
+build-type:          Simple
+cabal-version:       >=1.10
+license:             BSD3
+
+executable calcul.cgi
+  main-is:             calcul.hs
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+  build-depends:       base, network, cgi
+  
+executable calculhtml.cgi
+  main-is:             calculhtml.hs
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+  build-depends:       base, network, cgi, xhtml
+  
+executable hello.cgi
+  main-is:             hello.hs
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+  build-depends:       base, network, cgi
+
+executable hellohtml.cgi
+  main-is:             hellohtml.hs
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+  build-depends:       base, network, cgi, xhtml

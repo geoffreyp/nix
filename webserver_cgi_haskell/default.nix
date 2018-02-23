@@ -1,10 +1,14 @@
-with import <nixpkgs> {};
-stdenv.mkDerivation {
-  name = "mywebpagecgihaskell";
+{ pkgs ? import <nixpkgs> {} }:
+let
+  _calcul = pkgs.haskellPackages.callPackage ./calcul.nix {};
+in
+pkgs.stdenv.mkDerivation {
+  name = "calcul";
   src = ./.;
-  buildInputes = [ghc]
-  buildPhase = ''ghc -O2 calcul.cgi calcul.hs''
-  installPhase = ''mkdir $out
-					cp *.html $out/
-					cp *.cgi $out/ '';
+  buildInputs = [ _calcul ];
+  installPhase = ''
+    mkdir $out
+    cp ${_calcul}/bin/*.cgi $out/
+    cp *.html $out/
+  '';
 }

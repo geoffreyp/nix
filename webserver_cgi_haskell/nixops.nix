@@ -4,8 +4,7 @@
     networking.firewall.allowedTCPPorts = [ 80 ];
     services.lighttpd = {
       enable = true;
-      #adminAddr = "geoffrey@pruvost.xyz";
-      document-root = import ./default.nix;
+      document-root = import ./default.nix {inherit pkgs;};
       enableModules = [ "mod_cgi" ];
 		extraConfig = ''
 		cgi.assign = ( ".cgi"  => "" )

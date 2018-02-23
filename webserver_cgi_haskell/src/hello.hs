@@ -1,17 +1,18 @@
 import Network.CGI
+import Data.Maybe
 
 main :: IO ()
 main = runCGI $ handleErrors cgiMain
 
 cgiMain :: CGI CGIResult
 cgiMain = do
-  email <- getInput "email"
-  output $ renderPage email
+  name <- getInput "name"
+  output $ renderPage name
 
 renderPage :: Maybe String -> String
-renderPage email = "<!DOCTYPE html>\n"
+renderPage name = "<!DOCTYPE html>\n"
   ++ "<html>\n"
   ++ "<h1>\n"
-  ++ "21*2 = 42\n"
+  ++ "hello " ++ show (fromMaybe "" name) ++"\n"
   ++ "</h1>\n"
   ++ "</html>\n"
